@@ -7,7 +7,7 @@ import {
   faHouse,
   faFilePen,
   faRightToBracket,
-  faSignOut
+  faSignOut,
 } from "@fortawesome/free-solid-svg-icons";
 
 export const Navbar = ({ isAuth }) => {
@@ -17,20 +17,23 @@ export const Navbar = ({ isAuth }) => {
         <FontAwesomeIcon icon={faHouse} />
         ホーム
       </Link>
-      <Link to="/createpost">
-        <FontAwesomeIcon icon={faFilePen} />
-        記事投稿
-      </Link>
+
       {!isAuth ? (
         <Link to="/login">
           <FontAwesomeIcon icon={faRightToBracket} />
           ログイン
         </Link>
       ) : (
-        <Link to="/logout">
-          <FontAwesomeIcon icon={faSignOut} />
-          ログアウト
-        </Link>
+        <>
+          <Link to="/createpost">
+            <FontAwesomeIcon icon={faFilePen} />
+            記事投稿
+          </Link>
+          <Link to="/logout">
+            <FontAwesomeIcon icon={faSignOut} />
+            ログアウト
+          </Link>
+        </>
       )}
     </nav>
   );
