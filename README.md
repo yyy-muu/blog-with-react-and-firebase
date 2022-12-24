@@ -12,5 +12,4 @@
 
 `$ npm start`
 
-4. 実行開始後、ブラウザから[http://localhost:3000](http://localhost:3000)にアクセスすると、ToDo アプリを使用できます
-
+4. 実行開始後、ブラウザから[http://localhost:3000](http://localhost:3000)にアクセスすると、ブログアプリを使用できます
