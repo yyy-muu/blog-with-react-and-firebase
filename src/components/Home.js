@@ -6,14 +6,15 @@ import "./Home.css";
 
 export const Home = () => {
   const [postList, setPostList] = useState([]);
+  const postsCollectionRef = collection(db, "posts");
 
   useEffect(() => {
     const getPosts = async () => {
-      const data = await getDocs(collection(db, "posts"));
+      const data = await getDocs(postsCollectionRef);
       setPostList(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
     getPosts();
-  }, []);
+  }, [postsCollectionRef]);
 
   const handleDelete = async (id) => {
     await deleteDoc(doc(db, "posts", id));
@@ -32,7 +33,7 @@ export const Home = () => {
             <div className="postTextContainer">{post.postText}</div>
             <div className="nameAndDeleteButton">
               <h3>@{post.author.username}</h3>
-              {post.author.id === auth.currentUser.uid && (
+              {post.author.id === auth.currentUser?.uid && (
                 <button onClick={() => handleDelete(post.id)}>削除</button>
               )}
             </div>
